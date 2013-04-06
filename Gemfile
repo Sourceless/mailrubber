@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
+gem 'flat-ui-rails'
 
 group :development, :test do
   gem 'sqlite3'
