@@ -7,9 +7,18 @@
 # Ignore bundler config
 /.bundle
 
+# Vim swapfiles
+*.swp
+
+# Gemfile Lock
+Gemfile.lock
+
 # Ignore the default SQLite database.
 /db/*.sqlite3
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Ignore any database.yml
+/config/database.yml
