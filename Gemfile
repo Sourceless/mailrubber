@@ -4,7 +4,7 @@ gem 'rails', '3.2.13'
 
 group :development, :test do
   gem 'sqlite3'
-  gem 'rspec'
+  gem 'rspec-rails'
   gem 'factory_girl'
 end
 
