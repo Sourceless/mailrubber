@@ -15,6 +15,8 @@ describe Email do
   it { should be_valid }
 
   describe "when email is not present" do
+    before { @email.email = "" }
+
     it { should_not be_valid }
   end
 end
