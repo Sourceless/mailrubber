@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.13'
 gem 'bootstrap-sass'
 gem 'flat-ui-rails'
+gem 'validates_email_format_of'
 
 group :development, :test do
   gem 'sqlite3'
