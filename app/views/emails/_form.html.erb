@@ -1,8 +1,8 @@
 <%= form_for(@email) do |f| %>
   <% if @email.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@email.errors.count, "error") %> prohibited this email from being saved:</h2>
-
+    <div id="error_explanation" class="alert">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <h4>Error</h4>
       <ul>
       <% @email.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -10,12 +10,7 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Protect!" %>
-  </div>
+  
+  <%= f.text_field :email, :placeholder => "Your Email", :type => "email" %>
+  <%= f.submit "Protect!", :class => "btn btn-primary" %>
 <% end %>
