@@ -11,8 +11,7 @@ describe "Emails" do
 
     it "should have a field for email entry" do
       visit '/'
-      page.should have_selector('label',
-                                :text => 'Email')
+      page.should have_selector('input')
     end
 
     it "should have a submit button that says 'Protect!'" do
