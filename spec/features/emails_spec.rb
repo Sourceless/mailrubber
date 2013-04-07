@@ -3,14 +3,29 @@ require 'spec_helper'
 describe "Emails" do
 
   describe "Landing Page" do
-    it "should have the content 'MailRubber'" do
+    it "should have a title 'MialRubber'" do
       visit '/'
-      page.should have_content('MailRubber')
+      page.should have_selector('title',
+                                :text => 'MailRubber')
+    end
+
+    it "should have the header element 'MailRubber'" do
+      visit '/'
+      page.should have_selector('h1',
+                                :text => 'MailRubber')
     end
 
     it "should have a field for email entry" do
       visit '/'
-      page.should have_content('Email')
+      page.should have_selector('label',
+                                :text => 'Email')
+    end
+
+    it "should have a submit button that says 'Protect!'" do
+      visit '/'
+      page.should have_selector('input',
+                                :text => 'Protect!')
     end
   end
+
 end
