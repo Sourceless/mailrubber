@@ -6,7 +6,11 @@ margin-top:60px;
 h1
 {
 font-size:4em;
-margin-bottom:0
+margin-bottom:0;
+
+    & a {
+    text-decoration:none;
+    }
 }
 
 input[type="submit"]
