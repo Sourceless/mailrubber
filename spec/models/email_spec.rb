@@ -2,7 +2,9 @@ require 'spec_helper'
 
 describe Email do
 
-  before { @email = Email.new(:email => "test@test.com") }
+  before { @email = Email.new(:email => "test@test.com",
+                              :get_token => "testtoken",
+                              :delete_token => "testtoken") }
 
   subject { @email }
 

@@ -1,6 +1,6 @@
 <%= form_for(@email) do |f| %>
   <% if @email.errors.any? %>
-    <div id="error_explanation" class="alert">
+    <div id="error_explanation" class="alert alert-error">
       <button type="button" class="close" data-dismiss="alert">&times;</button>
       <h4>Error</h4>
       <ul>
