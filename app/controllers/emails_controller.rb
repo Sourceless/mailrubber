@@ -8,11 +8,19 @@ class EmailsController < ApplicationController
   end
 
   def show
-    @email = Email.find(params[:id])
+    @email = Email.where(:get_token => params[:token]).first
 
-    respond_to do |format|
-      format.html # show.html.erb
+    if session[:new]
+      render 'success'
+    elsif session[:verified]
+      respond_to do |format|
+        format.html # show.html.erb
+      end
+    else
+      render 'verify'
     end
+
+    reset_session
   end
 
   def new
@@ -28,10 +36,9 @@ class EmailsController < ApplicationController
 
     respond_to do |format|
       if @email.save
-        format.html { redirect_to @email, notice: 'Email was successfully created.' }
+        format.html { redirect_to email_show_path(:token => @email.get_token), notice: 'Email was successfully created.' }
       else
         format.html { render action: "new" }
-        format.json { render json: @email.errors, status: :unprocessable_entity }
       end
     end
   end
