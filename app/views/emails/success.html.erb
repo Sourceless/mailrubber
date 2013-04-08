@@ -1,0 +1,17 @@
+<div class="row-fluid pushdown">
+  <div class="span6 offset3">
+    <p id="alert alert-success"><%= notice %></p>
+
+    <div class="well">
+      <h3 class="center"><%= @email.email %></h3>
+    </div>
+
+    <strong>Give this link to people you want to share your email with:</strong>
+    <code><%= Rails.root.join(@email.get_token) %></code>
+
+    <strong>Use this link to delete this record (warning: only displayed once):</strong>
+    <code><%= Rails.root.join('delete', @email.delete_token) %></code>
+
+    <%= link_to '<i class="icon-chevron-left"></i> Back', root_url, :class => "btn btn-large btn-inverse center" %>
+  </div>
+</div>
