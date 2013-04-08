@@ -1,20 +1,16 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Email:</b>
-  <%= @email.email %>
-</p>
-
-<p>
-  <b>Get token:</b>
-  <%= @email.get_token %>
-</p>
-
-<p>
-  <b>Delete token:</b>
-  <%= @email.delete_token %>
-</p>
-
-
-<%= link_to 'Edit', edit_email_path(@email) %> |
-<%= link_to 'Back', emails_path %>
+<div class="row-fluid pushdown">
+  <div class="span6 offset3">
+    <div class="well">
+      <% if @email %>
+        <h3 class="center"><%= @email.email %></h3>
+      <% else %>
+        <h4 class="center">No email exists with that MailRubber code. It may have been deleted.</h4>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="row-fluid pushdown">
+  <div class="span12 center">
+    <%= link_to 'Protect your email address with MailRubber >', root_url %>
+  </div>
+</div>

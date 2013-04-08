@@ -1,0 +1,8 @@
+<div class="row-fluid pushdown">
+  <div class="span6 offset3">
+    <div class="alert alert-info center">Please prove you're human to reveal the email address.</div>
+    <%= form_for @email, :url => { :action => "show" }, :html => { :class => "center" } do |f| %>
+      <div class="captcha-center"><%= recaptcha_tags(:display => {:theme => "clean"}) %></div>
+      <%= f.submit "I'm Human", :class => "btn btn-primary" %>
+    <% end %>
+</div>

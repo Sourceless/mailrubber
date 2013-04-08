@@ -6,12 +6,18 @@
       <h3 class="center"><%= @email.email %></h3>
     </div>
 
-    <strong>Give this link to people you want to share your email with:</strong>
-    <code><%= Rails.root.join(@email.get_token) %></code>
+    <div>
+      <strong>Give this link to people you want to share your email with:</strong>
+      <pre><%= URI.join(root_url, @email.get_token) %></pre>
+    </div>
 
-    <strong>Use this link to delete this record (warning: only displayed once):</strong>
-    <code><%= Rails.root.join('delete', @email.delete_token) %></code>
+    <div>
+      <strong>Use this link to delete this record (warning: only displayed once):</strong>
+      <pre><%= URI.join(root_url, '/delete/', @email.delete_token) %></pre>
+    </div>
 
-    <%= link_to '<i class="icon-chevron-left"></i> Back', root_url, :class => "btn btn-large btn-inverse center" %>
+    <div class="center pushdown">
+      <%= link_to raw('<i class="icon-chevron-left icon-white"></i> Back'), root_url, :class => "btn btn-large btn-inverse" %>
+    </div>
   </div>
 </div>

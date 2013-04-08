@@ -1,0 +1,6 @@
+<%= form_for @email, :url => @email.get_token do |f| %>
+  <%= f.text_field :get_token, :placeholder => "MailRubber Code" %>
+  <%= button_tag(type: 'submit', class: "btn btn-success") do %> 
+    Get!
+  <% end %>
+<% end %>

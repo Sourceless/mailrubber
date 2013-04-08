@@ -12,5 +12,7 @@
   <% end %>
   
   <%= f.text_field :email, :placeholder => "Your Email", :type => "email" %>
-  <%= f.submit "Protect!", :class => "btn btn-primary" %>
+  <%= button_tag(type: 'submit', class: "btn btn-primary") do %> 
+    Protect!
+  <% end %>
 <% end %>

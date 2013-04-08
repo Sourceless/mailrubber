@@ -13,16 +13,21 @@ margin-bottom:0;
     }
 }
 
-input[type="submit"]
+button, input[type="submit"]
 {
 font-family:Lato;
 height:39px;
 margin-top:-10px;
 }
 
-.center
+.center 
 {
 text-align:center;
+}
+
+.center-block
+{
+margin:0 auto;
 }
 
 .center form
@@ -33,4 +38,11 @@ display:inline-block;
 .pushdown
 {
 margin-top:6em;
+}
+
+.captcha-center
+{
+display:block;
+width:447px;
+margin:1em auto 2em!important;
 }

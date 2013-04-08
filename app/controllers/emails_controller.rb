@@ -10,16 +10,32 @@ class EmailsController < ApplicationController
   def show
     @email = Email.where(:get_token => params[:token]).first
 
+    unless @email
+      # Honeypot - allow captcha to go through anyway.
+      # Limits attack options to brute force only
+      if verify_recaptcha
+        respond_to do |format|
+          format.html
+        end
+      else
+        @email = Email.new
+        render 'verify'
+        @email = nil
+      end
+
+      return
+    end
+
+    # Valid email
     if session[:new]
       render 'success'
-    elsif session[:verified]
+    elsif verify_recaptcha
       respond_to do |format|
         format.html # show.html.erb
       end
     else
       render 'verify'
     end
-
     reset_session
   end
 
@@ -33,10 +49,11 @@ class EmailsController < ApplicationController
 
   def create
     @email = Email.new(params[:email])
-
+    
     respond_to do |format|
       if @email.save
-        format.html { redirect_to email_show_path(:token => @email.get_token), notice: 'Email was successfully created.' }
+        session[:new] = true
+        format.html { redirect_to :action => 'show', :token => @email.get_token }
       else
         format.html { render action: "new" }
       end
@@ -44,12 +61,13 @@ class EmailsController < ApplicationController
   end
 
   def destroy
-    @email = Email.find(params[:id])
+    @email = Email.where(:delete_token => params[:token]).first
     @email.destroy
 
+    flash[:notice] = "Record deleted."
+
     respond_to do |format|
-      format.html { redirect_to emails_url }
-      format.json { head :no_content }
+      format.html { redirect_to root_url }
     end
   end
 end
