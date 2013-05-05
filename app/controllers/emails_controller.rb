@@ -1,12 +1,4 @@
 class EmailsController < ApplicationController
-  def index
-    @emails = Email.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-    end
-  end
-
   def show
     @email = Email.where(:get_token => params[:token]).first
 
